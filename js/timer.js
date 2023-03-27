@@ -1,3 +1,8 @@
+import {intervalId, menu} from "./options.js"
+import * as util from "./utils.js"
+
+
+
 export const timer = {
     minutes: document.querySelector(".heroMinutes"),
     seconds: document.querySelector(".heroSeconds"),
@@ -5,24 +10,19 @@ export const timer = {
     handleSetTimer(){
         let minutesSettings = Number(prompt("Quantos minutos deseja no timer?"))
         
-        if(isNaN(minutesSettings)){
+        if(isNaN(minutesSettings) || minutesSettings === 0){
             alert("Por favor digite somente números!")
             return
         }
-        timer.minutes.innerText = minutesSettings
-
-        return minutesSettings
-        
+        util.paddedDisplayTimer(minutesSettings, secondsSettings)        
     },
 
     updateTimer(){
         let minutesSettings = Number(timer.minutes.innerText)
         let secondsSettings = Number(timer.seconds.innerText)
 
-        
-
         if(minutesSettings === 0 && secondsSettings ===0){
-            clearInterval(intervalId);
+            menu.toggleSetStop()
             return;
         }
 
@@ -33,8 +33,7 @@ export const timer = {
             secondsSettings--;
           }
           
-          timer.minutes.innerText = minutesSettings.toString().padStart(2, '0');
-          timer.seconds.innerText = secondsSettings.toString().padStart(2, '0');
+          util.paddedDisplayTimer(minutesSettings, secondsSettings)
         
     },
 }

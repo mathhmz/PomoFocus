@@ -2,7 +2,7 @@ import * as util from "./utils.js"
 import {timer} from "./timer.js"
 
 // Define uma variável global para armazenar o ID do intervalo
-let intervalId;
+export let intervalId;
 
 // Define um objeto que representa o menu e suas propriedades
 export const menu = {
@@ -15,11 +15,15 @@ export const menu = {
 
     
 // Define métodos para alternar a visibilidade dos elementos
-        togglePlayPause() {
+        togglePlayPause() {            
             util.toggleVisibility(this.play, this.pause);
             util.toggleVisibility(this.set, this.stop);
 
+
             if(this.play.classList.contains("hide")){
+
+
+
                 intervalId = setInterval(timer.updateTimer.bind(this), 1000);
 
             }else {
@@ -30,10 +34,12 @@ export const menu = {
         toggleSetStop() {
             util.toggleVisibility(this.set, this.stop);
             util.toggleVisibility(this.play, this.pause);
-            clearInterval(intervalId);
 
             timer.minutes.innerText = "25"
             timer.seconds.innerText = "00"
+
+            clearInterval(intervalId);
+
             
         },
         toggleMusic() {
