@@ -3,6 +3,8 @@ Este é um repositório que contém o PomoFocus, um aplicativo de timer desenvol
 
 O projeto utiliza HTML, CSS e JavaScript, e é executado diretamente no navegador.
 
+Foi possível praticar um pouco de programacao orientada a objetos e consumo de API`s simples.
+
 Como utilizar
 Clone o repositório em sua máquina local
 Abra o arquivo index.html em seu navegador
