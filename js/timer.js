@@ -14,7 +14,7 @@ export const timer = {
             alert("Por favor digite somente números!")
             return
         }
-        util.paddedDisplayTimer(minutesSettings, secondsSettings)        
+        util.paddedDisplayTimer(minutesSettings,)        
     },
 
     updateTimer(){
@@ -22,6 +22,7 @@ export const timer = {
         let secondsSettings = Number(timer.seconds.innerText)
 
         if(minutesSettings === 0 && secondsSettings ===0){
+            document.getElementById("playerSource").play()
             menu.toggleSetStop()
             return;
         }

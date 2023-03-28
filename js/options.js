@@ -1,5 +1,6 @@
 import * as util from "./utils.js"
 import {timer} from "./timer.js"
+import {player} from "./player.js";
 
 // Define uma variável global para armazenar o ID do intervalo
 export let intervalId;
@@ -19,11 +20,7 @@ export const menu = {
             util.toggleVisibility(this.play, this.pause);
             util.toggleVisibility(this.set, this.stop);
 
-
-            if(this.play.classList.contains("hide")){
-
-
-
+            if(util.checkHide(this.play)){
                 intervalId = setInterval(timer.updateTimer.bind(this), 1000);
 
             }else {
@@ -44,6 +41,19 @@ export const menu = {
         },
         toggleMusic() {
             util.toggleVisibility(this.musicOff, this.musicOn);
+
+            if(util.checkHide(this.musicOn)){
+                if(player.isPlayerReady()){
+                    player.unmuteVideo()
+                }
+                else{
+                    player.onYouTubeIframeAPIReady()
+                }
+                
+            }
+            else{
+                player.muteVideo()
+            }
         },
 
         // Adiciona os eventos de clique aos elementos do menu
