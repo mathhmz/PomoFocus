@@ -1,6 +1,8 @@
 import * as util from "./utils.js"
 import {timer} from "./timer.js"
 import {player} from "./player.js";
+import {sounds} from "./sounds.js";
+
 
 // Define uma variável global para armazenar o ID do intervalo
 export let intervalId;
@@ -16,7 +18,8 @@ export const menu = {
 
     
 // Define métodos para alternar a visibilidade dos elementos
-        togglePlayPause() {            
+        togglePlayPause() {       
+            sounds.pressedButtonAudio()  
             util.toggleVisibility(this.play, this.pause);
             util.toggleVisibility(this.set, this.stop);
 
@@ -27,8 +30,11 @@ export const menu = {
                 clearInterval(intervalId);
               }
             
+            
+            
         },
         toggleSetStop() {
+            sounds.pressedButtonAudio()  
             util.toggleVisibility(this.set, this.stop);
             util.toggleVisibility(this.play, this.pause);
 
@@ -40,6 +46,7 @@ export const menu = {
             
         },
         toggleMusic() {
+            sounds.pressedButtonAudio()  
             util.toggleVisibility(this.musicOff, this.musicOn);
 
             if(util.checkHide(this.musicOn)){

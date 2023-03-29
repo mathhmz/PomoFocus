@@ -15,7 +15,7 @@ export const paddedDisplayTimer = (minutes,seconds) => {
 
 export const checkHide = (button) => {
   if (button.classList.contains("hide")){
-    return Boolean
+    return true
   }
   else{
     return false

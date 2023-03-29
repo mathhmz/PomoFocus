@@ -1,5 +1,6 @@
 import {intervalId, menu} from "./options.js"
 import * as util from "./utils.js"
+import { sounds } from "./sounds.js"
 
 
 
@@ -22,7 +23,7 @@ export const timer = {
         let secondsSettings = Number(timer.seconds.innerText)
 
         if(minutesSettings === 0 && secondsSettings ===0){
-            document.getElementById("playerSource").play()
+            sounds.timerUpAudio()
             menu.toggleSetStop()
             return;
         }
